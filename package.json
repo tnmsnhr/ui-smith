@@ -1,0 +1,41 @@
+{
+  "name": "react-native-uismith",
+  "version": "0.1.0",
+  "description": "UISmith – a production-grade, config-driven React Native design system.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "react-native": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react-native",
+    "design-system",
+    "ui-library",
+    "typescript",
+    "uismith"
+  ],
+  "author": "UISmith",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.71.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/react": "^19.2.14",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.6.0"
+  }
+}
