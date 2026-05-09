@@ -1,18 +1,22 @@
-const isObject = (value) => {
-    return typeof value === 'object' && value !== null && !Array.isArray(value);
-};
+function isPlainObject(value) {
+    return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+/**
+ * Deep-merge plain objects. Non-object values from `source` replace `target`.
+ * Arrays are treated as values (replaced), not merged by index.
+ */
 export function deepMerge(target, source) {
-    const result = { ...target };
-    Object.keys(source).forEach((key) => {
-        const srcVal = source[key];
-        const tgtVal = target[key];
-        if (isObject(tgtVal) && isObject(srcVal)) {
-            result[key] = deepMerge(tgtVal, srcVal);
+    const out = { ...target };
+    for (const key of Object.keys(source)) {
+        const sv = source[key];
+        const tv = out[key];
+        if (isPlainObject(sv) && isPlainObject(tv)) {
+            out[key] = deepMerge(tv, sv);
         }
         else {
-            result[key] = srcVal;
+            out[key] = sv;
         }
-    });
-    return result;
+    }
+    return out;
 }
 //# sourceMappingURL=deepMerge.js.map

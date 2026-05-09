@@ -1,10 +1,7 @@
-import type { DeepPartial } from '../types/util';
-import { type DesignSystemConfig } from './defaultConfig';
+import type { DesignSystemConfig } from "./designSystemConfig";
+import type { DeepPartial } from "../types/util";
 /**
- * Main extension point for consumers.
- * Accepts a deep-partial config and returns a fully-resolved config
- * with UISmith defaults filled in.
+ * Merge partial overrides onto library defaults. Immutably returns a full config.
  */
-export declare const createDesignSystemConfig: (overrides?: DeepPartial<DesignSystemConfig>) => DesignSystemConfig;
-export type { DesignSystemConfig } from './defaultConfig';
+export declare function createDesignSystemConfig(partial?: DeepPartial<DesignSystemConfig>): DesignSystemConfig;
 //# sourceMappingURL=createDesignSystemConfig.d.ts.map

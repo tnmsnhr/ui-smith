@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "test": "jest",
+    "test": "jest --no-watchman",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

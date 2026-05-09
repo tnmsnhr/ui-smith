@@ -1,14 +1,7 @@
-import type { CoreTokens } from '../tokens/coreTokens';
-import type { SemanticTokens } from '../tokens/semanticTokens';
-import type { ComponentsTheme } from '../types/theme';
-export interface DesignSystemConfig {
-    tokens: {
-        core: CoreTokens;
-        semantic: SemanticTokens;
-    };
-    components: ComponentsTheme;
-}
-export declare const defaultConfig: DesignSystemConfig;
-export type { ComponentsTheme, CoreTokens, SemanticTokens } from '../types/theme';
-export type { DesignSystemConfig as UISmithDesignSystemConfig } from './defaultConfig';
+import type { DesignSystemConfig } from "./designSystemConfig";
+import type { ButtonSizeMetrics } from "./componentTheme";
+import type { ButtonSize } from "../types/literals";
+/** Default px ladder: minHeight — fontSize — iconSize */
+export declare const defaultButtonSizeMetrics: Record<ButtonSize, ButtonSizeMetrics>;
+export declare const defaultDesignSystemConfig: DesignSystemConfig;
 //# sourceMappingURL=defaultConfig.d.ts.map

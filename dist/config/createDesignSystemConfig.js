@@ -1,17 +1,12 @@
-import { deepMerge } from '../utils/deepMerge';
-import { defaultConfig } from './defaultConfig';
+import { defaultDesignSystemConfig } from "./defaultConfig";
+import { deepMerge } from "../utils/deepMerge";
 /**
- * Main extension point for consumers.
- * Accepts a deep-partial config and returns a fully-resolved config
- * with UISmith defaults filled in.
+ * Merge partial overrides onto library defaults. Immutably returns a full config.
  */
-export const createDesignSystemConfig = (overrides) => {
-    if (!overrides) {
-        return defaultConfig;
+export function createDesignSystemConfig(partial) {
+    if (partial === undefined) {
+        return defaultDesignSystemConfig;
     }
-    // Intentionally create a fresh object so consumers can't accidentally
-    // mutate the shared defaultConfig.
-    const base = deepMerge(defaultConfig, overrides);
-    return base;
-};
+    return deepMerge(defaultDesignSystemConfig, partial);
+}
 //# sourceMappingURL=createDesignSystemConfig.js.map

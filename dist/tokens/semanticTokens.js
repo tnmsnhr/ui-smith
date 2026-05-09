@@ -1,36 +1,48 @@
-export const createDefaultSemanticTokens = (core) => {
-    const gray = core.colors.gray;
-    const primary = core.colors.primary;
-    const light = {
-        'background.body': core.colors.white,
-        'background.surface': gray['50'],
-        'background.subtle': gray['100'],
-        'border.default': gray['200'],
-        'border.muted': gray['100'],
-        'text.primary': gray['900'],
-        'text.secondary': gray['700'],
-        'text.muted': gray['500'],
-        'intent.primary': primary['600'],
-        'intent.success': core.colors.success,
-        'intent.danger': core.colors.danger,
-        'intent.warning': core.colors.warning,
-        'intent.info': core.colors.info
+function lightPalette() {
+    return {
+        "background.body": "#ffffff",
+        "background.surface": "#f8fafc",
+        "background.subtle": "#f1f5f9",
+        "background.disabled": "#e2e8f0",
+        "text.primary": "#0f172a",
+        "text.secondary": "#334155",
+        "text.muted": "#64748b",
+        "text.disabled": "#94a3b8",
+        "border.default": "#e2e8f0",
+        "border.muted": "#cbd5e1",
+        "intent.primary": "#2563eb",
+        "intent.secondary": "#64748b",
+        "intent.danger": "#dc2626",
+        "intent.success": "#16a34a",
+        "intent.warning": "#ca8a04",
+        "intent.info": "#0284c7",
+        "intent.muted": "#94a3b8",
     };
-    const dark = {
-        'background.body': gray['900'],
-        'background.surface': gray['800'],
-        'background.subtle': gray['700'],
-        'border.default': gray['700'],
-        'border.muted': gray['800'],
-        'text.primary': gray['50'],
-        'text.secondary': gray['200'],
-        'text.muted': gray['400'],
-        'intent.primary': primary['400'],
-        'intent.success': core.colors.success,
-        'intent.danger': core.colors.danger,
-        'intent.warning': core.colors.warning,
-        'intent.info': core.colors.info
+}
+function darkPalette() {
+    return {
+        "background.body": "#0f172a",
+        "background.surface": "#1e293b",
+        "background.subtle": "#334155",
+        "background.disabled": "#334155",
+        "text.primary": "#f8fafc",
+        "text.secondary": "#cbd5e1",
+        "text.muted": "#94a3b8",
+        "text.disabled": "#64748b",
+        "border.default": "#334155",
+        "border.muted": "#475569",
+        "intent.primary": "#60a5fa",
+        "intent.secondary": "#94a3b8",
+        "intent.danger": "#f87171",
+        "intent.success": "#4ade80",
+        "intent.warning": "#facc15",
+        "intent.info": "#38bdf8",
+        "intent.muted": "#64748b",
     };
-    return { light, dark };
+}
+/** Default semantic maps — replace roles in config as needed */
+export const defaultSemanticTokens = {
+    light: lightPalette(),
+    dark: darkPalette(),
 };
 //# sourceMappingURL=semanticTokens.js.map

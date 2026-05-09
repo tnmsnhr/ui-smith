@@ -1,95 +1,24 @@
-export type ColorScale = {
-    [shade: string]: string;
-};
-export type CoreColors = {
-    [name: string]: string | ColorScale;
-};
-export type TypographyTokens = {
-    fontFamily: {
-        body: string;
-        heading: string;
-        mono: string;
-    };
-    fontSize: {
-        xs: number;
-        sm: number;
-        md: number;
-        lg: number;
-        xl: number;
-        '2xl': number;
-    };
-    lineHeight: {
-        xs: number;
-        sm: number;
-        md: number;
-        lg: number;
-        xl: number;
-        '2xl': number;
-    };
-    fontWeight: {
-        regular: string | number;
-        medium: string | number;
-        semiBold: string | number;
-        bold: string | number;
-    };
-};
-export type SpacingTokens = {
-    none: number;
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-};
-export type RadiusTokens = {
-    none: number;
-    sm: number;
-    md: number;
-    lg: number;
-    pill: number;
-    full: number;
-};
-export type ShadowTokens = {
-    level0: {
-        elevation: number;
-    };
-    level1: {
-        elevation: number;
-    };
-    level2: {
-        elevation: number;
-    };
-    level3: {
-        elevation: number;
-    };
-};
-export type SizeTokens = {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-};
-export type ZIndexTokens = {
-    base: number;
-    dropdown: number;
-    modal: number;
-    toast: number;
-};
-export type OpacityTokens = {
-    disabled: number;
-    focusRing: number;
-    backdrop: number;
-};
+import type { TextStyle } from "react-native";
+import type { SpacingTokenKey, TypographyPresetKey } from "../types/literals";
+/** One typography preset — full TextStyle subset allowed at config time */
+export type TypographyPreset = Partial<TextStyle>;
+export type TypographyPresets = Record<TypographyPresetKey, TypographyPreset>;
 export interface CoreTokens {
-    colors: CoreColors;
-    typography: TypographyTokens;
-    spacing: SpacingTokens;
-    radii: RadiusTokens;
-    shadows: ShadowTokens;
-    sizes: SizeTokens;
-    zIndices: ZIndexTokens;
-    opacity: OpacityTokens;
+    spacing: Record<SpacingTokenKey, number>;
+    radii: {
+        sm: number;
+        md: number;
+        lg: number;
+        full: number;
+    };
+    typography: {
+        fontFamily: {
+            body: string;
+            headline: string;
+            mono: string;
+        };
+        presets: TypographyPresets;
+    };
 }
 export declare const defaultCoreTokens: CoreTokens;
 //# sourceMappingURL=coreTokens.d.ts.map

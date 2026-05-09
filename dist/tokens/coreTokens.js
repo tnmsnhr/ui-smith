@@ -1,112 +1,142 @@
+function preset(p) {
+    return p;
+}
+/** Default spacing ladder — 4px grid through `6xl` */
+const spacing = {
+    none: 0,
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
+    xl: 32,
+    "2xl": 48,
+    "3xl": 64,
+    "4xl": 80,
+    "5xl": 96,
+    "6xl": 120,
+};
+/** Default typography presets — tune in `createDesignSystemConfig` */
+const presets = {
+    display: preset({
+        fontSize: 34,
+        lineHeight: 40,
+        fontWeight: "700",
+        fontFamily: "System",
+    }),
+    headline: preset({
+        fontSize: 28,
+        lineHeight: 36,
+        fontWeight: "700",
+        fontFamily: "System",
+    }),
+    title: preset({
+        fontSize: 22,
+        lineHeight: 28,
+        fontWeight: "600",
+        fontFamily: "System",
+    }),
+    subtitle: preset({
+        fontSize: 18,
+        lineHeight: 24,
+        fontWeight: "500",
+        fontFamily: "System",
+    }),
+    overline: preset({
+        fontSize: 12,
+        lineHeight: 16,
+        fontWeight: "600",
+        letterSpacing: 1,
+        textTransform: "uppercase",
+        fontFamily: "System",
+    }),
+    bodyLarge: preset({
+        fontSize: 18,
+        lineHeight: 26,
+        fontWeight: "400",
+        fontFamily: "System",
+    }),
+    body: preset({
+        fontSize: 16,
+        lineHeight: 24,
+        fontWeight: "400",
+        fontFamily: "System",
+    }),
+    bodySmall: preset({
+        fontSize: 14,
+        lineHeight: 20,
+        fontWeight: "400",
+        fontFamily: "System",
+    }),
+    callout: preset({
+        fontSize: 16,
+        lineHeight: 22,
+        fontWeight: "400",
+        fontFamily: "System",
+    }),
+    label: preset({
+        fontSize: 14,
+        lineHeight: 20,
+        fontWeight: "500",
+        fontFamily: "System",
+    }),
+    labelSmall: preset({
+        fontSize: 12,
+        lineHeight: 16,
+        fontWeight: "500",
+        fontFamily: "System",
+    }),
+    buttonSmall: preset({
+        fontSize: 12,
+        lineHeight: 16,
+        fontWeight: "500",
+        fontFamily: "System",
+    }),
+    button: preset({
+        fontSize: 14,
+        lineHeight: 20,
+        fontWeight: "500",
+        fontFamily: "System",
+    }),
+    buttonLarge: preset({
+        fontSize: 16,
+        lineHeight: 22,
+        fontWeight: "500",
+        fontFamily: "System",
+    }),
+    caption: preset({
+        fontSize: 12,
+        lineHeight: 16,
+        fontWeight: "400",
+        fontFamily: "System",
+    }),
+    footnote: preset({
+        fontSize: 11,
+        lineHeight: 14,
+        fontWeight: "400",
+        fontFamily: "System",
+    }),
+    mono: preset({
+        fontSize: 14,
+        lineHeight: 20,
+        fontWeight: "400",
+        fontFamily: "Courier",
+    }),
+};
 export const defaultCoreTokens = {
-    colors: {
-        white: '#FFFFFF',
-        black: '#000000',
-        gray: {
-            '50': '#F9FAFB',
-            '100': '#F3F4F6',
-            '200': '#E5E7EB',
-            '300': '#D1D5DB',
-            '400': '#9CA3AF',
-            '500': '#6B7280',
-            '600': '#4B5563',
-            '700': '#374151',
-            '800': '#1F2933',
-            '900': '#111827'
-        },
-        primary: {
-            '50': '#EEF2FF',
-            '100': '#E0E7FF',
-            '200': '#C7D2FE',
-            '300': '#A5B4FC',
-            '400': '#818CF8',
-            '500': '#6366F1',
-            '600': '#4F46E5',
-            '700': '#4338CA',
-            '800': '#3730A3',
-            '900': '#312E81'
-        },
-        success: '#16A34A',
-        danger: '#DC2626',
-        warning: '#F59E0B',
-        info: '#0284C7'
+    spacing,
+    radii: {
+        sm: 6,
+        md: 10,
+        lg: 14,
+        full: 9999,
     },
     typography: {
         fontFamily: {
-            body: 'System',
-            heading: 'System',
-            mono: 'System'
+            body: "System",
+            headline: "System",
+            mono: "Courier",
         },
-        fontSize: {
-            xs: 12,
-            sm: 14,
-            md: 16,
-            lg: 18,
-            xl: 20,
-            '2xl': 24
-        },
-        lineHeight: {
-            xs: 16,
-            sm: 18,
-            md: 20,
-            lg: 22,
-            xl: 24,
-            '2xl': 28
-        },
-        fontWeight: {
-            regular: '400',
-            medium: '500',
-            semiBold: '600',
-            bold: '700'
-        }
+        presets,
     },
-    spacing: {
-        none: 0,
-        xs: 4,
-        sm: 8,
-        md: 12,
-        lg: 16,
-        xl: 24
-    },
-    radii: {
-        none: 0,
-        sm: 4,
-        md: 8,
-        lg: 12,
-        pill: 999,
-        full: 9999
-    },
-    shadows: {
-        level0: {
-            elevation: 0
-        },
-        level1: {
-            elevation: 1
-        },
-        level2: {
-            elevation: 3
-        },
-        level3: {
-            elevation: 6
-        }
-    },
-    sizes: {
-        xs: 16,
-        sm: 24,
-        md: 32,
-        lg: 40,
-        xl: 48
-    },
-    zIndices: {
-        base: 0,
-        dropdown: 1000,
-        modal: 2000,
-        toast: 3000
-    },
-    opacity: {
-        disabled: 0.4,
-        focusRing: 0.8,
-        backdrop: 0.5
-    }
 };
 //# sourceMappingURL=coreTokens.js.map

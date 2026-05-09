@@ -1,37 +1,53 @@
-import { defaultCoreTokens } from '../tokens/coreTokens';
-import { createDefaultSemanticTokens } from '../tokens/semanticTokens';
-// Default component token stubs; will be expanded as we add components.
-const defaultComponents = {
-    Box: {
-        baseStyle: {}
-    },
-    Text: {
-        baseStyle: {}
-    },
-    Button: {
-        baseStyle: {},
-        variants: {
-            solid: {},
-            outline: {},
-            ghost: {}
-        },
-        sizes: {
-            sm: {},
-            md: {},
-            lg: {}
-        },
-        defaultProps: {
-            variant: 'solid',
-            size: 'md'
-        }
-    }
+import { defaultCoreTokens } from "../tokens/coreTokens";
+import { defaultSemanticTokens } from "../tokens/semanticTokens";
+/** Default px ladder: minHeight — fontSize — iconSize */
+export const defaultButtonSizeMetrics = {
+    xs: { minHeight: 32, fontSize: 12, iconSize: 14 },
+    s: { minHeight: 36, fontSize: 14, iconSize: 16 },
+    md: { minHeight: 40, fontSize: 14, iconSize: 16 },
+    lg: { minHeight: 48, fontSize: 16, iconSize: 16 },
+    xl: { minHeight: 52, fontSize: 16, iconSize: 20 },
 };
-const semanticTokens = createDefaultSemanticTokens(defaultCoreTokens);
-export const defaultConfig = {
+export const defaultDesignSystemConfig = {
     tokens: {
         core: defaultCoreTokens,
-        semantic: semanticTokens
+        semantic: defaultSemanticTokens,
     },
-    components: defaultComponents
+    components: {
+        Button: {
+            defaultProps: {
+                variant: "solid",
+                size: "md",
+                intent: "primary",
+            },
+            labelPreset: "button",
+            labelPresetBySize: {
+                xs: "buttonSmall",
+                s: "button",
+                md: "button",
+                lg: "buttonLarge",
+                xl: "buttonLarge",
+            },
+            sizeMetrics: defaultButtonSizeMetrics,
+            iconLabelGap: "xs",
+            motion: {
+                press: { scale: 0.98, durationMs: 120 },
+            },
+        },
+        TextInput: {
+            defaultProps: {
+                size: "md",
+            },
+            motion: {
+                focus: { borderWidth: 2, durationMs: 180 },
+                blur: { borderWidth: 1, durationMs: 150 },
+            },
+        },
+        Typography: {
+            defaultProps: {
+                variant: "body",
+            },
+        },
+    },
 };
 //# sourceMappingURL=defaultConfig.js.map

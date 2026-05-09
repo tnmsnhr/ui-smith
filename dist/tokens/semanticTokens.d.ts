@@ -1,9 +1,9 @@
-import type { CoreTokens } from './coreTokens';
-export type SemanticColorRole = 'background.body' | 'background.surface' | 'background.subtle' | 'border.default' | 'border.muted' | 'text.primary' | 'text.secondary' | 'text.muted' | 'intent.primary' | 'intent.success' | 'intent.danger' | 'intent.warning' | 'intent.info';
+import type { SemanticColorRole } from "../types/literals";
 export type SemanticColors = Record<SemanticColorRole, string>;
 export interface SemanticTokens {
     light: SemanticColors;
     dark: SemanticColors;
 }
-export declare const createDefaultSemanticTokens: (core: CoreTokens) => SemanticTokens;
+/** Default semantic maps — replace roles in config as needed */
+export declare const defaultSemanticTokens: SemanticTokens;
 //# sourceMappingURL=semanticTokens.d.ts.map
