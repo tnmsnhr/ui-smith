@@ -1,19 +1,31 @@
+---
+title: UISmith
+---
+
 # UISmith
 
-Production-grade, config-driven React Native design system.
+**react-native-uismith** — a config-driven React Native design system. This site lists **what ships today** and how to use it.
 
-Use this documentation to get started quickly and browse supported components and props.
+| Page | Description |
+|------|-------------|
+| [Getting started](./getting-started.md) | Install, peer dependencies, imports, examples |
+| [Package reference](./components.md) | Tokens, config, TypeScript APIs, codegen — **authoritative list** |
+| [Publishing](./publishing.md) | npm publish + GitHub Pages from `/docs` |
 
-## Start Here
+## Current release (library surface)
 
-- [Getting Started](./getting-started)
-- [Components API](./components)
-- [Publishing & GitHub Pages](./publishing)
+| Capability | Shipped? |
+|------------|----------|
+| **Spacing / radii / typography presets** (`tokens.core`) | Yes |
+| **Semantic colors** — light + dark maps (`tokens.semantic`) | Yes |
+| **`createDesignSystemConfig`**, **`defaultDesignSystemConfig`**, **`deepMerge`** | Yes |
+| **Literal unions** — `BUTTON_SIZES`, `BUTTON_VARIANTS`, `TYPOGRAPHY_PRESET_KEYS`, … | Yes |
+| **`ButtonProps`**, **`TypographyProps`** (types for upcoming components) | Yes |
+| **Codegen maps** — `semanticStaticLight`, `semanticStaticDark`, `motionPresets` | Yes |
+| **Runtime UI** — `<Button />`, `<Typography />`, `<TextInput />`, theme **Provider** | **Not yet** (planned next phases) |
 
-## Why UISmith
+Use these docs + IDE autocomplete for APIs. **Visual previews** of components belong in your app or Storybook — GitHub Pages here is Markdown-only.
 
-- Token-driven design system (`core` + `semantic` tokens)
-- Light/dark color mode support out of the box
-- Primitives + form + feedback + overlays + navigation components
-- TypeScript-first API for better DX
+### Extended handbook
 
+Long-form notes (full typography scale, Button intent matrix, accessibility) live in **`doc.md`** at the **repository root** (next to `package.json`). Open that file on GitHub when browsing the repo.

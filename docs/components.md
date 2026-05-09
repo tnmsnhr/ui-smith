@@ -1,263 +1,135 @@
-# Components API
+---
+title: Package reference
+---
 
-This reference covers component props currently exported by `react-native-uismith`.
+# Package reference
 
-## Primitives
-
-### `Box`
-
-`BoxProps extends ViewProps`
-
-- `padding`, `paddingHorizontal`, `paddingVertical`: spacing token key
-- `margin`, `marginHorizontal`, `marginVertical`: spacing token key
-- `bg`: token color key or string
-- `radius`: radius token key
-- `style`: `ViewStyle | ViewStyle[]`
-
-### `Text`
-
-`TextProps extends RNTextProps`
-
-- `variant`: `"body" | "caption" | "label" | "heading"`
-- `color`: string
-
-### `PressableBase`
-
-`PressableBaseProps extends PressableProps`
+This page reflects **`react-native-uismith`** as shipped from source (`src/index.ts`). **Runtime components are not exported yet** — only types, tokens, config helpers, and codegen maps.
 
 ---
 
-## Inputs
+## Configuration
 
-### `TextInput`
+| Export | Kind | Description |
+|--------|------|-------------|
+| `createDesignSystemConfig` | function | Deep-merge partial overrides onto **`defaultDesignSystemConfig`** |
+| `defaultDesignSystemConfig` | object | Full default **`DesignSystemConfig`** |
+| `defaultButtonSizeMetrics` | object | Per-button-size px: **`minHeight`**, **`fontSize`**, **`iconSize`** |
+| `deepMerge` | function | Generic deep merge for plain objects |
+| `DesignSystemConfig` | type | Root config type |
 
-`TextInputProps extends RNTextInputProps`
+### `components` keys
 
-- `size`: `"sm" | "md" | "lg"`
-- `error`: boolean
-- `disabled`: boolean
-
-### `PasswordInput`
-
-`PasswordInputProps extends Omit<TextInputProps, "secureTextEntry">`
-
-### `SearchInput`
-
-`SearchInputProps extends TextInputProps`
-
-### `Checkbox`
-
-- `checked`: boolean
-- `onChange`: `(checked: boolean) => void`
-- `label`: string
-- `disabled`: boolean
-
-### `Radio`
-
-- `selected`: boolean
-- `onChange`: `(selected: boolean) => void`
-- `label`: string
-- `disabled`: boolean
-
-### `Switch`
-
-- `value`: boolean
-- `onValueChange`: `(value: boolean) => void`
-- `disabled`: boolean
-
-### `Select`
-
-- `value`: string
-- `onChange`: `(value: string) => void`
-- `options`: `{ value: string; label: string }[]`
-- `placeholder`: string
-
-### `Stepper`
-
-- `value`: number
-- `min`: number
-- `max`: number
-- `step`: number
-- `onChange`: `(value: number) => void`
+| Key | Purpose |
+|-----|---------|
+| `Button` | Defaults (`variant`, `size`, `intent`), **`labelPreset`**, **`labelPresetBySize`**, **`sizeMetrics`**, **`iconLabelGap`**, **`motion.press`** |
+| `TextInput` | **`defaultProps.size`**, **`motion.focus`**, **`motion.blur`** |
+| `Typography` | **`defaultProps.variant`** (default **`body`**) |
 
 ---
 
-## Feedback
+## Design tokens
 
-### `Button`
+| Export | Description |
+|--------|-------------|
+| `defaultCoreTokens` | Spacing ladder (**`none`**…**`6xl`**), radii, typography **`presets`**, **`fontFamily`** slots (**`body`**, **`headline`**, **`mono`**) |
+| `defaultSemanticTokens` | **`light`** / **`dark`** semantic color maps |
+| `CoreTokens`, `TypographyPreset`, `TypographyPresets` | Types |
+| `SemanticTokens`, `SemanticColors` | Types |
 
-- `variant`: `"solid" | "outline" | "ghost"`
-- `size`: `"sm" | "md" | "lg"`
-- `intent`: `"primary" | "success" | "danger" | "warning" | "neutral"`
-- `loading`: boolean
-- `leftIcon`: `ReactNode`
-- `rightIcon`: `ReactNode`
-- `children`: `ReactNode`
-- plus `PressableProps` (except `style`)
-
-### `IconButton`
-
-- `variant`: `"ghost" | "solid" | "outline"`
-- `size`: `"sm" | "md" | "lg"`
-- `intent`: `"primary" | "neutral" | "danger"`
-- `icon`: `ReactNode` (required)
-- plus `PressableProps` (except `style`)
-
-### `Badge`
-
-- `variant`: `"subtle" | "solid" | "outline"`
-- `intent`: `"primary" | "success" | "danger" | "warning" | "neutral"`
-- `children`: `ReactNode`
-
-### `Chip`
-
-- `label`: string
-- `selected`: boolean
-- `onPress`: `() => void`
-- `icon`: `ReactNode`
-- `removable`: boolean
-- `onRemove`: `() => void`
-
-### `Toast`
-
-- `visible`: boolean
-- `message`: string
-- `intent`: `"info" | "success" | "danger" | "warning"`
-
-### `Snackbar`
-
-- `visible`: boolean
-- `message`: string
-- `actionLabel`: string
-- `onActionPress`: `() => void`
-
-### `ProgressBar`
-
-- `value`: number
-
-### `ActivityIndicator`
-
-Accepts React Native `ActivityIndicatorProps`.
-
-### `Skeleton`
-
-- `width`: `number | string`
-- `height`: number
-- `radius`: number
-
-### `Banner`
-
-- `title`: string
-- `message`: string
-- `intent`: `"info" | "success" | "danger" | "warning"`
-- `actionLabel`: string
-- `onActionPress`: `() => void`
-- `onClose`: `() => void`
-
-### `EmptyState`
-
-- `title`: string
-- `description`: string
-- `icon`: `ReactNode`
-- `action`: `ReactNode`
-
-### `Tag`
-
-- `label`: string
-
-### `Tooltip`
-
-- `content`: `ReactNode`
-- `children`: `ReactNode`
+Semantic roles include **`text.*`**, **`intent.*`**, **`border.*`**, **`background.*`**, **`text.disabled`**, **`background.disabled`**, etc. See **`SemanticColorRole`** in types.
 
 ---
 
-## Layout
+## Literal unions (runtime + IDE)
 
-### `Divider`
+Arrays exported for checks / autocomplete:
 
-`DividerProps extends ViewProps`
-
-- `vertical`: boolean
-
-### `Card`
-
-`CardProps extends ViewProps`
-
-- `elevated`: boolean
-
-### `ListItem`
-
-- `title`: string
-- `subtitle`: string
-- `left`: `ReactNode`
-- `right`: `ReactNode`
-- `onPress`: `() => void`
-
-### `Tabs`
-
-- `tabs`: `{ key: string; label: string }[]`
-- `activeKey`: string
-- `onChange`: `(key: string) => void`
-
-### `Surface`
-
-`SurfaceProps extends ViewProps`
-
-- `level`: `0 | 1 | 2 | 3`
-
-### `SegmentedControl`
-
-- `segments`: `{ key: string; label: string }[]`
-- `value`: string
-- `onChange`: `(key: string) => void`
+| Export | Values (summary) |
+|--------|-------------------|
+| `SPACING_TOKEN_KEYS` | `none`, `xs` … `6xl` |
+| `TYPOGRAPHY_PRESET_KEYS` | `display`, `headline`, … `buttonSmall`, `button`, `buttonLarge`, … `mono` |
+| `BUTTON_VARIANTS` | `solid`, `outline`, `ghost`, `link` |
+| `BUTTON_SIZES` | `xs`, `s`, `md`, `lg`, `xl` |
+| `BUTTON_INTENTS` | `primary`, `secondary`, `danger`, `success`, `info`, `warning`, `muted` |
+| `TEXT_INPUT_SIZES` | `sm`, `md`, `lg` |
 
 ---
 
-## Overlays
+## Type exports (future components)
 
-### `Modal`
+### `ButtonProps`
 
-- `visible`: boolean
-- `onRequestClose`: `() => void`
-- `children`: `ReactNode`
+Maps to the planned **`Pressable`**-based Button (Phase 4).
 
-### `BottomSheet`
+| Prop | Notes |
+|------|--------|
+| `variant?` | `solid` \| `outline` \| `ghost` \| `link` |
+| `size?` | `xs` \| `s` \| `md` \| `lg` \| `xl` — pairs with **`sizeMetrics`** + typography **`button*`** presets |
+| `intent?` | Semantic intent colors (**not** `disabled` as intent) |
+| `disabled?` | Use **`text.disabled`** / **`background.disabled`** for styling |
+| `loading?` | Pending action |
+| `fullWidth?` | Stretch width; with **`iconOnly`**, full-width icon row |
+| `leftIcon?`, `rightIcon?` | `ReactNode` |
+| `iconOnly?` | Square by default unless **`fullWidth`** |
+| `children?` | Label |
+| Plus **`Pressable`** props (`onPress`, `accessibilityLabel`, `hitSlop`, …) except **`style`** replaced per typings |
 
-- `visible`: boolean
-- `onDismiss`: `() => void`
-- `children`: `ReactNode`
-- `snapHeight`: number (fraction of screen height)
+### `TypographyProps`
 
-### `Menu`
+Maps to the planned **`Typography`** **`Text`** wrapper.
 
-- `visible`: boolean
-- `items`: `{ key: string; label: string }[]`
-- `onSelect`: `(key: string) => void`
-- `onDismiss`: `() => void`
+| Prop | Notes |
+|------|--------|
+| `variant` | **Required** — **`TypographyPresetKey`** |
+| `color?` | **`SemanticColorRole`** (not raw hex — RN **`color`** omitted from extend) |
+| `children?`, `style?` | Standard |
+| Other **`Text`** props | **`numberOfLines`**, **`selectable`**, … |
 
 ---
 
-## Navigation & Media
+## Codegen (Phase 2)
 
-### `AppBar`
+Regenerated by **`npm run codegen`** (runs before **`npm run build`** in the package repo).
 
-- `title`: string
-- `leftAction`: `ReactNode`
-- `rightAction`: `ReactNode`
-- `onLeftPress`: `() => void`
-- `onRightPress`: `() => void`
+| Export | Description |
+|--------|-------------|
+| `semanticStaticLight` | Frozen **`tokens.semantic.light`** literals |
+| `semanticStaticDark` | Frozen **`tokens.semantic.dark`** literals |
+| `motionPresets` | **`Button.motion`** + **`TextInput.motion`** numerics |
+| `SemanticStaticLight`, `SemanticStaticDark`, `MotionPresets` | `typeof` types |
 
-### `FAB`
+---
 
-- `icon`: `ReactNode`
-- `label`: string
-- `onPress`: `() => void`
+## Utilities
 
-### `Avatar`
+| Export | Description |
+|--------|-------------|
+| `DeepPartial<T>` | Partial recursive |
+| `Dict` | Plain object alias |
 
-`AvatarProps extends Omit<ImageProps, "source">`
+---
 
-- `uri`: string
-- `label`: string
-- `size`: `"sm" | "md" | "lg"`
+## Import cheat sheet
+
+```ts
+import {
+  createDesignSystemConfig,
+  defaultDesignSystemConfig,
+  semanticStaticLight,
+  semanticStaticDark,
+  motionPresets,
+  BUTTON_SIZES,
+  TYPOGRAPHY_PRESET_KEYS,
+} from "react-native-uismith";
+
+import type {
+  ButtonProps,
+  TypographyProps,
+  DesignSystemConfig,
+  SemanticColorRole,
+  TypographyPresetKey,
+} from "react-native-uismith";
+```
+
+For narrative docs (when to use each intent, typography px ladder), see **`doc.md`** in the repository root.

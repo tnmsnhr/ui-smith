@@ -1,76 +1,112 @@
-# Getting Started
+---
+title: Getting started
+---
 
-## Installation
+# Getting started
+
+## Install
 
 ```bash
 npm install react-native-uismith
 ```
 
-Peer dependencies expected in your app:
+### Peer dependencies
 
-- `react`
-- `react-native`
+- `react` >= 17  
+- `react-native` >= 0.71  
 
-## Basic Usage
+## What you can import today
 
-```tsx
-import React from "react";
-import { View } from "react-native";
+The package exports **configuration**, **tokens**, **generated static maps**, and **TypeScript types** — not runtime UI components yet.
+
+```ts
 import {
-  DesignSystemProvider,
-  Text,
-  Button,
-  useColorMode,
+  createDesignSystemConfig,
+  defaultDesignSystemConfig,
+  defaultCoreTokens,
+  defaultSemanticTokens,
+  semanticStaticLight,
+  semanticStaticDark,
+  motionPresets,
+  BUTTON_SIZES,
+  BUTTON_VARIANTS,
+  BUTTON_INTENTS,
+  TYPOGRAPHY_PRESET_KEYS,
+  SPACING_TOKEN_KEYS,
 } from "react-native-uismith";
-
-function Screen() {
-  const { isDark, toggleColorMode } = useColorMode();
-
-  return (
-    <View style={{ gap: 12 }}>
-      <Text variant="heading">UISmith</Text>
-      <Button intent="primary">Primary action</Button>
-      <Button variant="outline" onPress={toggleColorMode}>
-        Theme: {isDark ? "Dark" : "Light"}
-      </Button>
-    </View>
-  );
-}
-
-export default function App() {
-  return (
-    <DesignSystemProvider>
-      <Screen />
-    </DesignSystemProvider>
-  );
-}
 ```
 
-## Local Monorepo Development
+### Customize theme config
 
-When developing the package and an app in the same repo, alias `react-native-uismith` to source:
+```ts
+import { createDesignSystemConfig } from "react-native-uismith";
+
+export const theme = createDesignSystemConfig({
+  tokens: {
+    core: {
+      spacing: { md: 20 },
+    },
+    semantic: {
+      light: {
+        "intent.primary": "#1d4ed8",
+      },
+    },
+  },
+});
+```
+
+Merged config deep-merges onto **`defaultDesignSystemConfig`**.
+
+### Use codegen outputs (O(1) lookups)
+
+After **`npm run build`** (or **`npm run codegen`** in the package repo), maps mirror merged defaults:
+
+```ts
+import {
+  semanticStaticLight,
+  semanticStaticDark,
+  motionPresets,
+} from "react-native-uismith";
+
+const hex = semanticStaticLight["text.primary"];
+const press = motionPresets.Button.press;
+```
+
+Pick **`semanticStaticLight`** vs **`semanticStaticDark`** from your app’s color scheme / appearance.
+
+### Type-only component contracts
+
+Build your own primitives against the published shapes:
+
+```ts
+import type { ButtonProps, TypographyProps } from "react-native-uismith";
+
+// Future: <Button /> will satisfy ButtonProps
+```
+
+See **[Package reference](./components.md)** for full prop tables.
+
+## Local development (monorepo)
+
+Point Metro at the package source while iterating:
 
 ```js
 const path = require("path");
 const { getDefaultConfig } = require("expo/metro-config");
 
 const config = getDefaultConfig(__dirname);
-const uiSmithSrcPath = path.resolve(__dirname, "../ui-smith/src");
+const pkgSrc = path.resolve(__dirname, "../ui-smith/src");
 
-config.watchFolders = [...(config.watchFolders || []), uiSmithSrcPath];
+config.watchFolders = [...(config.watchFolders || []), pkgSrc];
 config.resolver = {
   ...(config.resolver || {}),
   extraNodeModules: {
     ...(config.resolver?.extraNodeModules || {}),
-    "react-native-uismith": uiSmithSrcPath,
+    "react-native-uismith": pkgSrc,
   },
 };
 
 module.exports = config;
 ```
 
-Then restart Metro:
-
-```bash
-npx expo start -c
-```
+Restart Metro with cache clear: `npx expo start -c`.
