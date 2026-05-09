@@ -15,6 +15,7 @@ For **architecture, codegen, roadmap, and naming conventions** (package name, ho
 | [TypeScript and your IDE](#typescript-and-your-ide)     | Autocomplete, unions, JSDoc — use the editor first.                   |
 | [Design tokens](#design-tokens)                         | Spacing ladder + semantic color roles (examples).                     |
 | [Theme config](#theme-config)                           | `tokens.*` / `components.*` overview (appearance only).               |
+| [Codegen](#codegen-phase-2)                             | Generated **`semanticStatic*`** / **`motionPresets`** maps (`npm run codegen`). |
 | [Typography](#typography)                               | **Default type scale (px)**, recommended presets, customization, props. |
 | [Button](#button)                                       | Variants, sizes, intent, props, **light / dark**.                     |
 | [TextInput](#textinput)                                 | Sizes, props.                                                         |
@@ -77,7 +78,7 @@ Used by components and optional text `color` props. Exact keys live in `tokens.s
 
 ## Theme config
 
-Appearance only — not codegen workflow (see plan). Names match the shipped `DesignSystemConfig` type.
+Names match the shipped **`DesignSystemConfig`** type. Customize via **`createDesignSystemConfig`**.
 
 
 | Section                  | What it controls                                                                                                          |
@@ -90,6 +91,18 @@ Appearance only — not codegen workflow (see plan). Names match the shipped `De
 | `components.TextInput`   | **Sizes**, borders, label typography, focus/error, motion.                                                                |
 | `components.Typography`  | Default **`variant`** fallback (**`body`**).                                                                              |
 
+
+### Codegen (Phase 2)
+
+**`npm run build`** runs **`npm run codegen`** first. That emits **frozen literal maps** under **`src/generated/`** from **`createDesignSystemConfig()`** (library defaults today — consumer-specific CLI can extend later):
+
+| Generated file | Exported values | Purpose |
+| ---------------- | --------------- | ------- |
+| **`styles.static.light.ts`** | **`semanticStaticLight`**, type **`SemanticStaticLight`** | O(1) semantic color lookup for light mode |
+| **`styles.static.dark.ts`** | **`semanticStaticDark`**, type **`SemanticStaticDark`** | O(1) semantic color lookup for dark mode |
+| **`motion.presets.ts`** | **`motionPresets`**, type **`MotionPresets`** | Numeric endpoints for **Button** press + **TextInput** focus/blur motion |
+
+Re-exported from the package root (`semanticStaticLight`, `semanticStaticDark`, `motionPresets`). **Do not hand-edit** generated files — change **`defaultDesignSystemConfig`** / tokens, then run **`npm run codegen`** (or **`npm run build`**).
 
 ---
 
@@ -438,8 +451,9 @@ Treat `**doc.md` as public API documentation.** Update it **in the same PR** as 
 | Usage         | Defaults, controlled patterns, a11y notes.                                   |
 | Customization | New config paths under `tokens` / `components`.                              |
 | TypeScript    | New unions, `*Props` exports, JSDoc — IDE hints must stay truthful.          |
+| Codegen       | If **`tokens.semantic`** defaults or component **motion** defaults change, run **`npm run codegen`** (or **`npm run build`**) so **`src/generated/`** stays in sync; same PR. |
 
 
-Keep **architecture and codegen** in the **plan file** only.
+Keep **deep codegen architecture** in the **plan file**; this handbook documents **what** is generated and **how to refresh** it.
 
 When `**doc.md`** and types disagree, fix **types first** if autocomplete would lie, then align this file.
