@@ -1,1 +1,0 @@
-{"version":3,"file":"Modal.d.ts","sourceRoot":"","sources":["../../../src/components/overlays/Modal.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,MAAM,WAAW,UAAU;IACzB,OAAO,EAAE,OAAO,CAAC;IACjB,cAAc,CAAC,EAAE,MAAM,IAAI,CAAC;IAC5B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;CAC3B;AAED,eAAO,MAAM,KAAK,EAAE,KAAK,CAAC,EAAE,CAAC,UAAU,CAgCtC,CAAC"}
