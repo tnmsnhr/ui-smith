@@ -1,14 +1,14 @@
 export { createDesignSystemConfig } from "./config/createDesignSystemConfig";
 export type { DesignSystemConfig } from "./config/designSystemConfig";
 export { defaultDesignSystemConfig } from "./config/defaultConfig";
-export type { ButtonMotionPress, ButtonSizeMetrics, ButtonThemeConfig, ComponentsThemeConfig, TextInputMotionBorder, TextInputThemeConfig, TypographyThemeConfig, } from "./config/componentTheme";
+export type { ButtonMotionConfig, ButtonMotionFade, ButtonMotionPressHighlight, ButtonMotionRipple, ButtonMotionBounce, ButtonSizeMetrics, ButtonThemeConfig, ComponentsThemeConfig, TextInputMotionBorder, TextInputThemeConfig, TypographyThemeConfig, } from "./config/componentTheme";
 export type { TypographyProps } from "./types/typographyProps";
 export { Typography } from "./components/typography/Typography";
 export { defaultButtonSizeMetrics } from "./config/defaultConfig";
 export type { ButtonProps } from "./types/buttonProps";
 export { Button } from "./components/feedback/Button";
-export type { ButtonIntent, ButtonSize, ButtonVariant, SemanticColorRole, SpacingTokenKey, TextInputSize, TypographyPresetKey, } from "./types/literals";
-export { BUTTON_INTENTS, BUTTON_SIZES, BUTTON_VARIANTS, SPACING_TOKEN_KEYS, TEXT_INPUT_SIZES, TYPOGRAPHY_PRESET_KEYS, } from "./types/literals";
+export type { ButtonIntent, ButtonPressEffect, ButtonSize, ButtonVariant, SemanticColorRole, SpacingTokenKey, TextInputSize, TypographyPresetKey, } from "./types/literals";
+export { BUTTON_INTENTS, BUTTON_PRESS_EFFECTS, BUTTON_SIZES, BUTTON_VARIANTS, SPACING_TOKEN_KEYS, TEXT_INPUT_SIZES, TYPOGRAPHY_PRESET_KEYS, } from "./types/literals";
 export type { DeepPartial, Dict } from "./types/util";
 export { deepMerge } from "./utils/deepMerge";
 export type { ColorMode, DesignSystemTheme, ThemeBundle } from "./types/theme";

@@ -57,5 +57,7 @@ export const BUTTON_INTENTS = [
     "warning",
     "muted",
 ];
+/** Press feedback for `Button` — default **`ripple`** (Material ripple on Android; subtle opacity on iOS). */
+export const BUTTON_PRESS_EFFECTS = ["ripple", "fade", "press", "bounce"];
 export const TEXT_INPUT_SIZES = ["sm", "md", "lg"];
 //# sourceMappingURL=literals.js.map

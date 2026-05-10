@@ -91,5 +91,9 @@ export const BUTTON_INTENTS = [
 ] as const;
 export type ButtonIntent = (typeof BUTTON_INTENTS)[number];
 
+/** Press feedback for `Button` — default **`ripple`** (Material ripple on Android; subtle opacity on iOS). */
+export const BUTTON_PRESS_EFFECTS = ["ripple", "fade", "press", "bounce"] as const;
+export type ButtonPressEffect = (typeof BUTTON_PRESS_EFFECTS)[number];
+
 export const TEXT_INPUT_SIZES = ["sm", "md", "lg"] as const;
 export type TextInputSize = (typeof TEXT_INPUT_SIZES)[number];

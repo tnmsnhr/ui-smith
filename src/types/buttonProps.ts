@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { PressableProps, StyleProp, ViewStyle } from "react-native";
 
-import type { ButtonIntent, ButtonSize, ButtonVariant } from "./literals";
+import type { ButtonIntent, ButtonPressEffect, ButtonSize, ButtonVariant } from "./literals";
 
 /**
  * Public Button API — semantic variants + common product patterns (icons, loading, full width).
@@ -17,6 +17,12 @@ export interface ButtonProps extends Omit<PressableProps, "style" | "children"> 
   size?: ButtonSize;
   /** Maps to semantic intent colors (`intent.primary`, …) */
   intent?: ButtonIntent;
+  /**
+   * Press feedback — **`ripple`** uses native ripple on Android and a short opacity dip on iOS;
+   * **`fade`** / **`press`** / **`bounce`** use smooth Reanimated transitions (no Material ripple).
+   * Tune timings in **`components.Button.motion`**.
+   */
+  pressEffect?: ButtonPressEffect;
   /**
    * Non-interactive state — resolve disabled chrome from **`tokens.semantic[mode].text.disabled`** /
    * **`background.disabled`**, not from `intent`.

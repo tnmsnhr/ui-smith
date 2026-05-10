@@ -29,6 +29,9 @@ export type ButtonSize = (typeof BUTTON_SIZES)[number];
  */
 export declare const BUTTON_INTENTS: readonly ["primary", "secondary", "danger", "success", "info", "warning", "muted"];
 export type ButtonIntent = (typeof BUTTON_INTENTS)[number];
+/** Press feedback for `Button` — default **`ripple`** (Material ripple on Android; subtle opacity on iOS). */
+export declare const BUTTON_PRESS_EFFECTS: readonly ["ripple", "fade", "press", "bounce"];
+export type ButtonPressEffect = (typeof BUTTON_PRESS_EFFECTS)[number];
 export declare const TEXT_INPUT_SIZES: readonly ["sm", "md", "lg"];
 export type TextInputSize = (typeof TEXT_INPUT_SIZES)[number];
 //# sourceMappingURL=literals.d.ts.map

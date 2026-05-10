@@ -24,6 +24,7 @@ export const defaultDesignSystemConfig: DesignSystemConfig = {
         variant: "solid",
         size: "md",
         intent: "primary",
+        pressEffect: "ripple",
       },
       labelPreset: "button",
       labelPresetBySize: {
@@ -36,7 +37,29 @@ export const defaultDesignSystemConfig: DesignSystemConfig = {
       sizeMetrics: defaultButtonSizeMetrics,
       iconLabelGap: "xs",
       motion: {
-        press: { scale: 0.98, durationMs: 120 },
+        ripple: {
+          iosFallbackToOpacity: 0.92,
+          iosFallbackDurationMs: 90,
+          iosReleaseDurationMs: 160,
+        },
+        fade: {
+          toOpacity: 0.72,
+          durationMs: 140,
+          releaseDurationMs: 180,
+        },
+        press: {
+          toOpacity: 0.88,
+          translateY: 1,
+          durationMs: 100,
+          releaseDurationMs: 160,
+        },
+        bounce: {
+          pressedScale: 0.94,
+          pressFriction: 6,
+          pressTension: 280,
+          releaseFriction: 5,
+          releaseTension: 200,
+        },
       },
     },
     TextInput: {

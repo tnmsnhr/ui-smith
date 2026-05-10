@@ -12,7 +12,7 @@ export const Typography = forwardRef<React.ElementRef<typeof Text>, TypographyPr
   const theme = useTheme();
   const resolvedVariant = variant ?? theme.components.Typography.defaultProps?.variant ?? "body";
   const preset = theme.core.typography.presets[resolvedVariant];
-  const semanticColor = color ? theme.semantic[color] : undefined;
+  const semanticColor = color ? theme.semantic[color] : theme.semantic["text.primary"];
 
   const resolvedStyle: TextStyle = {
     ...(preset as TextStyle),

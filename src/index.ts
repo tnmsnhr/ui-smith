@@ -2,7 +2,11 @@ export { createDesignSystemConfig } from "./config/createDesignSystemConfig";
 export type { DesignSystemConfig } from "./config/designSystemConfig";
 export { defaultDesignSystemConfig } from "./config/defaultConfig";
 export type {
-  ButtonMotionPress,
+  ButtonMotionConfig,
+  ButtonMotionFade,
+  ButtonMotionPressHighlight,
+  ButtonMotionRipple,
+  ButtonMotionBounce,
   ButtonSizeMetrics,
   ButtonThemeConfig,
   ComponentsThemeConfig,
@@ -21,6 +25,7 @@ export { Button } from "./components/feedback/Button";
 
 export type {
   ButtonIntent,
+  ButtonPressEffect,
   ButtonSize,
   ButtonVariant,
   SemanticColorRole,
@@ -31,6 +36,7 @@ export type {
 
 export {
   BUTTON_INTENTS,
+  BUTTON_PRESS_EFFECTS,
   BUTTON_SIZES,
   BUTTON_VARIANTS,
   SPACING_TOKEN_KEYS,

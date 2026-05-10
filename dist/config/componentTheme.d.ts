@@ -1,7 +1,36 @@
-import type { ButtonIntent, ButtonSize, ButtonVariant, SpacingTokenKey, TextInputSize, TypographyPresetKey } from "../types/literals";
-export interface ButtonMotionPress {
-    scale?: number;
+import type { ButtonIntent, ButtonPressEffect, ButtonSize, ButtonVariant, SpacingTokenKey, TextInputSize, TypographyPresetKey } from "../types/literals";
+/** Android: native ripple; iOS: quick opacity dip (no native ripple API). */
+export interface ButtonMotionRipple {
+    /** Override auto ripple color (rgba string). */
+    androidRippleColor?: string;
+    iosFallbackToOpacity?: number;
+    iosFallbackDurationMs?: number;
+    iosReleaseDurationMs?: number;
+}
+export interface ButtonMotionFade {
+    toOpacity?: number;
     durationMs?: number;
+    releaseDurationMs?: number;
+}
+/** Opacity + slight vertical shift (“depressed” control). */
+export interface ButtonMotionPressHighlight {
+    toOpacity?: number;
+    translateY?: number;
+    durationMs?: number;
+    releaseDurationMs?: number;
+}
+export interface ButtonMotionBounce {
+    pressedScale?: number;
+    pressFriction?: number;
+    pressTension?: number;
+    releaseFriction?: number;
+    releaseTension?: number;
+}
+export interface ButtonMotionConfig {
+    ripple?: ButtonMotionRipple;
+    fade?: ButtonMotionFade;
+    press?: ButtonMotionPressHighlight;
+    bounce?: ButtonMotionBounce;
 }
 /** Pixel metrics for a button size — implement **Button** using these for height, label `fontSize`, and icon slot. */
 export interface ButtonSizeMetrics {
@@ -17,6 +46,7 @@ export interface ButtonThemeConfig {
         variant?: ButtonVariant;
         size?: ButtonSize;
         intent?: ButtonIntent;
+        pressEffect?: ButtonPressEffect;
     };
     /**
      * Default label preset when **`labelPresetBySize`** has no entry for the active **`size`**.
@@ -38,9 +68,7 @@ export interface ButtonThemeConfig {
      * Implementations should prefer **`fontSize`** / **`iconSize`** / **`minHeight`** here over inferring only from typography presets.
      */
     sizeMetrics?: Partial<Record<ButtonSize, ButtonSizeMetrics>>;
-    motion?: {
-        press?: ButtonMotionPress;
-    };
+    motion?: ButtonMotionConfig;
 }
 export interface TextInputMotionBorder {
     borderWidth?: number;
