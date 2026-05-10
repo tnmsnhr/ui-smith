@@ -17,13 +17,15 @@ npm install react-native-uismith
 
 ## What you can import today
 
-The package exports **configuration**, **tokens**, **generated static maps**, **runtime theme hooks**, and **TypeScript types**.
+The package exports configuration, tokens, generated static maps, runtime theme hooks, and now **`Button`** + **`Typography`** components.
 
 ```ts
 import {
   createDesignSystemConfig,
   defaultDesignSystemConfig,
   DesignSystemProvider,
+  Button,
+  Typography,
   useColorMode,
   useTheme,
   defaultCoreTokens,
@@ -111,14 +113,30 @@ export default function App() {
 }
 ```
 
-### Type-only component contracts
+### Use runtime components
 
-Build your own primitives against the published shapes:
+```tsx
+import React from "react";
+import { DesignSystemProvider, Button, Typography } from "react-native-uismith";
+
+export default function App() {
+  return (
+    <DesignSystemProvider>
+      <Typography variant="headline" color="text.primary">
+        UISmith
+      </Typography>
+      <Button intent="primary">Continue</Button>
+    </DesignSystemProvider>
+  );
+}
+```
+
+### Component prop contracts
+
+Use the public prop types for wrappers/composition:
 
 ```ts
 import type { ButtonProps, TypographyProps } from "react-native-uismith";
-
-// Future: <Button /> will satisfy ButtonProps
 ```
 
 See **[Package reference](./components.md)** for full prop tables.

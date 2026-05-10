@@ -20,10 +20,11 @@ title: UISmith
 | **Semantic colors** — light + dark maps (`tokens.semantic`) | Yes |
 | **`createDesignSystemConfig`**, **`defaultDesignSystemConfig`**, **`deepMerge`** | Yes |
 | **Literal unions** — `BUTTON_SIZES`, `BUTTON_VARIANTS`, `TYPOGRAPHY_PRESET_KEYS`, … | Yes |
-| **`ButtonProps`**, **`TypographyProps`** (types for upcoming components) | Yes |
+| **`ButtonProps`**, **`TypographyProps`** (public component props) | Yes |
 | **Codegen maps** — `semanticStaticLight`, `semanticStaticDark`, `motionPresets` | Yes |
 | **Runtime theme layer** — `DesignSystemProvider`, `useTheme`, `useColorMode`, `useThemeBundle` | Yes |
-| **Runtime UI** — `<Button />`, `<Typography />`, `<TextInput />` | **Not yet** (planned next phases) |
+| **Runtime UI** — `<Button />`, `<Typography />` | Yes |
+| **Runtime UI** — `<TextInput />` | Planned next phase |
 
 Use these docs + IDE autocomplete for APIs. **Visual previews** of components belong in your app or Storybook — GitHub Pages here is Markdown-only.
 

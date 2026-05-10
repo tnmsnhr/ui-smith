@@ -1,6 +1,6 @@
 # react-native-uismith
 
-Config-driven React Native design system: **tokens**, **theme config**, **TypeScript APIs**, **codegen static maps**, and a minimal runtime **theme provider/hooks**. Runtime UI primitives (`<Button />`, `<Typography />`, `<TextInput />`) are planned in later phases.
+Config-driven React Native design system: **tokens**, **theme config**, **TypeScript APIs**, **codegen static maps**, runtime **theme provider/hooks**, plus `<Button />` and `<Typography />` primitives. `<TextInput />` is planned in a later phase.
 
 ## Documentation
 
@@ -27,6 +27,8 @@ import {
   createDesignSystemConfig,
   defaultDesignSystemConfig,
   DesignSystemProvider,
+  Button,
+  Typography,
   useColorMode,
   useTheme,
   semanticStaticLight,

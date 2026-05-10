@@ -12,10 +12,12 @@ export type {
 } from "./config/componentTheme";
 
 export type { TypographyProps } from "./types/typographyProps";
+export { Typography } from "./components/typography/Typography";
 
 export { defaultButtonSizeMetrics } from "./config/defaultConfig";
 
 export type { ButtonProps } from "./types/buttonProps";
+export { Button } from "./components/feedback/Button";
 
 export type {
   ButtonIntent,
