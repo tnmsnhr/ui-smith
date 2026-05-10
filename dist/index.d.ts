@@ -9,6 +9,7 @@ export type { ButtonIntent, ButtonSize, ButtonVariant, SemanticColorRole, Spacin
 export { BUTTON_INTENTS, BUTTON_SIZES, BUTTON_VARIANTS, SPACING_TOKEN_KEYS, TEXT_INPUT_SIZES, TYPOGRAPHY_PRESET_KEYS, } from "./types/literals";
 export type { DeepPartial, Dict } from "./types/util";
 export { deepMerge } from "./utils/deepMerge";
+export type { ColorMode, DesignSystemTheme, ThemeBundle } from "./types/theme";
 export type { CoreTokens, TypographyPreset, TypographyPresets } from "./tokens/coreTokens";
 export { defaultCoreTokens } from "./tokens/coreTokens";
 export type { SemanticColors, SemanticTokens } from "./tokens/semanticTokens";
@@ -17,6 +18,8 @@ export { defaultSemanticTokens } from "./tokens/semanticTokens";
 export { semanticStaticLight } from "./generated/styles.static.light";
 export { semanticStaticDark } from "./generated/styles.static.dark";
 export { motionPresets } from "./generated/motion.presets";
+export { createThemeBundle, createThemeForColorMode } from "./theme/createTheme";
+export { DesignSystemProvider, useColorMode, useTheme, useThemeBundle, } from "./theme/DesignSystemProvider";
 export type { SemanticStaticLight } from "./generated/styles.static.light";
 export type { SemanticStaticDark } from "./generated/styles.static.dark";
 export type { MotionPresets } from "./generated/motion.presets";

@@ -4,7 +4,7 @@ title: Package reference
 
 # Package reference
 
-This page reflects **`react-native-uismith`** as shipped from source (`src/index.ts`). **Runtime components are not exported yet** — only types, tokens, config helpers, and codegen maps.
+This page reflects **`react-native-uismith`** as shipped from source (`src/index.ts`). Runtime **theme provider/hooks** are exported; UI components are still planned.
 
 ---
 
@@ -17,6 +17,19 @@ This page reflects **`react-native-uismith`** as shipped from source (`src/index
 | `defaultButtonSizeMetrics` | object | Per-button-size px: **`minHeight`**, **`fontSize`**, **`iconSize`** |
 | `deepMerge` | function | Generic deep merge for plain objects |
 | `DesignSystemConfig` | type | Root config type |
+| `createThemeForColorMode` | function | Build one `DesignSystemTheme` for `light` or `dark` |
+| `createThemeBundle` | function | Build `{ light, dark }` theme slices |
+
+## Runtime theme API (Phase 3)
+
+| Export | Kind | Description |
+|--------|------|-------------|
+| `DesignSystemProvider` | React component | Selects active mode (`light`/`dark`) and provides resolved theme slices |
+| `useTheme` | hook | Returns active `DesignSystemTheme` (`core`, `semantic`, `components`, `id`) |
+| `useThemeBundle` | hook | Returns both prebuilt slices `{ light, dark }` |
+| `useColorMode` | hook | Returns `{ colorMode, isDark, setColorMode, toggleColorMode }` |
+| `ColorMode` | type | `'light' | 'dark'` |
+| `DesignSystemTheme`, `ThemeBundle` | types | Runtime theme shapes |
 
 ### `components` keys
 

@@ -17,12 +17,15 @@ npm install react-native-uismith
 
 ## What you can import today
 
-The package exports **configuration**, **tokens**, **generated static maps**, and **TypeScript types** — not runtime UI components yet.
+The package exports **configuration**, **tokens**, **generated static maps**, **runtime theme hooks**, and **TypeScript types**.
 
 ```ts
 import {
   createDesignSystemConfig,
   defaultDesignSystemConfig,
+  DesignSystemProvider,
+  useColorMode,
+  useTheme,
   defaultCoreTokens,
   defaultSemanticTokens,
   semanticStaticLight,
@@ -73,6 +76,40 @@ const press = motionPresets.Button.press;
 ```
 
 Pick **`semanticStaticLight`** vs **`semanticStaticDark`** from your app’s color scheme / appearance.
+
+### Runtime provider and hooks (Phase 3)
+
+```tsx
+import React from "react";
+import { Text } from "react-native";
+import {
+  DesignSystemProvider,
+  useColorMode,
+  useTheme,
+} from "react-native-uismith";
+
+function Screen() {
+  const theme = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  return (
+    <Text
+      onPress={toggleColorMode}
+      style={{ color: theme.semantic["text.primary"] }}
+    >
+      Mode: {colorMode}
+    </Text>
+  );
+}
+
+export default function App() {
+  return (
+    <DesignSystemProvider>
+      <Screen />
+    </DesignSystemProvider>
+  );
+}
+```
 
 ### Type-only component contracts
 

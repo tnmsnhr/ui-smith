@@ -22,7 +22,8 @@ title: UISmith
 | **Literal unions** — `BUTTON_SIZES`, `BUTTON_VARIANTS`, `TYPOGRAPHY_PRESET_KEYS`, … | Yes |
 | **`ButtonProps`**, **`TypographyProps`** (types for upcoming components) | Yes |
 | **Codegen maps** — `semanticStaticLight`, `semanticStaticDark`, `motionPresets` | Yes |
-| **Runtime UI** — `<Button />`, `<Typography />`, `<TextInput />`, theme **Provider** | **Not yet** (planned next phases) |
+| **Runtime theme layer** — `DesignSystemProvider`, `useTheme`, `useColorMode`, `useThemeBundle` | Yes |
+| **Runtime UI** — `<Button />`, `<Typography />`, `<TextInput />` | **Not yet** (planned next phases) |
 
 Use these docs + IDE autocomplete for APIs. **Visual previews** of components belong in your app or Storybook — GitHub Pages here is Markdown-only.
 

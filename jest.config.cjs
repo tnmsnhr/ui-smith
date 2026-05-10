@@ -5,7 +5,7 @@ module.exports = {
   roots: ['<rootDir>/test'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
-    '^react-native$': 'react-native-web', // lightweight stand-in for logic tests
+    '^react-native$': '<rootDir>/test/react-native-shim.ts',
     '^react-native-uismith(.*)$': '<rootDir>/src$1'
   },
   transform: {
